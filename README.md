@@ -1,3 +1,5 @@
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/agualis/tailwind-vite?file=src%2Fcomponents%2FButtons.vue)
+
 # Tailwind + Vue 3 + TypeScript + Vite
 
 This is a demo to show how dynamic tailwind classes can involve a huge css bundle size depending on the `safelist` rules.
