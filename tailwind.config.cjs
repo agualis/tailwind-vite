@@ -5,18 +5,14 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,vue}",
   ],
   safelist: [
-    { pattern: /^shadow/ },
     // https://tailwindcss.com/docs/content-configuration#safelisting-classes
     // https://github.com/tailwindlabs/tailwindcss/discussions/10079
     {
       pattern: /(bg|border)-[^/]+$/,
       variants: ['dark', 'hover', 'focus', 'dark:hover', 'dark:focus'],
     },
-    { pattern: /^text/ },
     { pattern: /^from/ },
     { pattern: /^to/ },
-    { pattern: /^mr/ },
-    { pattern: /^w/ },
   ],
   theme: {
     extend: {
