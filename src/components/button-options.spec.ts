@@ -1,7 +1,7 @@
 import { generateButtonClassSafelist } from './button-options.js';
 
 test('Generates tailwind safelist for dynamic button options', () => {
-  expect(generateButtonClassSafelist()).toMatchInlineSnapshot(`
+  expect(generateButtonClassSafelist()).toEqual(
     [
       "from-primary-600",
       "to-primary-600",
@@ -180,5 +180,5 @@ test('Generates tailwind safelist for dynamic button options', () => {
       "text-transparent-500 ",
       "dark:text-transparent-400",
     ]
-  `);
+  );
 });
