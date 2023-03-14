@@ -38,10 +38,8 @@ export default defineConfig({
     commonjsOptions: {
       // Allows to import button-options from tailwind commonJS setup
       include: [
-        'button-options',
         'src/components/button-options.js',
       ],
-      transformMixedEsModules: true,
     },
   },
   test: {
