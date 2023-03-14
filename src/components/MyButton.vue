@@ -1,6 +1,27 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
+import {
+  hoverFrom,
+  hoverTo,
+  gradientFrom,
+  gradientTo,
+  backgroundFlat,
+  darkBackgroundFlat,
+  darkHoverBackgroundFlat,
+  hoverBackgroundFlat,
+  hoverBackground,
+  background,
+  darkHoverBackground,
+  darkBackground,
+  border,
+  darkBorder,
+  darkHoverBorder,
+  text,
+  darkText,
+  darkFocusBorder,
+} from "button-options";
+
 type Props = {
   tag?: "button" | "a" | "router-link";
   size?: "xs" | "sm" | "md" | "lg";
@@ -80,16 +101,16 @@ const bgGradientClasses = computed(() => {
   if (props.disabled) {
     return `bg-gray-300 dark:bg-gray-700 text-white dark:text-gray-500`;
   }
-  return `
-        bg-gradient-to-tr from-${fromColor}-600 to-${toColor}-600
-        hover:from-${fromColor}-700 hover:to-${toColor}-700 transition-colors
-      `;
+
+  return ` bg-gradient-to-tr ${gradientFrom(fromColor)} ${gradientTo(
+    toColor
+  )} ${hoverFrom(fromColor)} ${hoverTo(toColor)} transition-colors`;
 });
 
 const bgFlatClasses = computed(() => {
   return `
-        bg-${props.color}-50 hover:bg-${props.color}-100
-        dark:bg-${props.color}-800 dark:hover:bg-${props.color}-700
+        ${backgroundFlat(props.color)} ${hoverBackgroundFlat(props.color)}
+        ${darkBackgroundFlat(props.color)} ${darkHoverBackgroundFlat(props.color)}
       `;
 });
 
@@ -105,8 +126,8 @@ const bgColorClasses = computed(() => {
     }
 
     return `
-          bg-${props.color}-600 hover:bg-${props.color}-700
-          dark:bg-${props.color}-gray-400 dark:hover:bg-${props.color}-gray-600
+          ${background(props.color)} ${hoverBackground(props.color)}
+          ${darkBackground(props.color)} ${darkHoverBackground(props.color)}
         `;
   }
 });
@@ -114,7 +135,11 @@ const bgColorClasses = computed(() => {
 const borderClasses = computed(() => {
   if (props.outline) {
     if (props.disabled) return `border border-gray-200 dark:border-gray-700`;
-    return `border border-${props.color}-200 dark:border-${props.color}-700 dark:hover:border-${props.color}-600 dark:focus:border-${props.color}-600 hover:text-gray-600 dark:hover:text-gray-200 dark:focus:text-gray-200`;
+    return `border ${border(props.color)} dark:border-${darkBorder(
+      props.color
+    )} ${darkHoverBorder(props.color)} ${darkFocusBorder(
+      props.color
+    )} hover:text-gray-600 dark:hover:text-gray-200 dark:focus:text-gray-200`;
   }
   return "border-none";
 });
@@ -127,8 +152,7 @@ const textColorClasses = computed(() => {
       return "text-white hover:text-yellow-500 dark:hover:text-yellow-500";
     else return "text-gray-800 hover:text-blue-600 dark:text-gray-100";
   }
-  if (props.outline || props.flat)
-    return `text-${props.color}-500 dark:text-${props.color}-400`;
+  if (props.outline || props.flat) return `${text(props.color)} ${darkText(props.color)}`;
   return "text-white";
 });
 

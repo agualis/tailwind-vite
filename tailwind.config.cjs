@@ -1,3 +1,7 @@
+const {
+  generateButtonClassSafelist,
+} = require('./src/components/button-options.js');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -5,14 +9,7 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,vue}",
   ],
   safelist: [
-    // https://tailwindcss.com/docs/content-configuration#safelisting-classes
-    // https://github.com/tailwindlabs/tailwindcss/discussions/10079
-    {
-      pattern: /(bg|border)-[^/]+$/,
-      variants: ['dark', 'hover', 'focus', 'dark:hover', 'dark:focus'],
-    },
-    { pattern: /^from/ },
-    { pattern: /^to/ },
+    ...generateButtonClassSafelist(),
   ],
   theme: {
     extend: {
